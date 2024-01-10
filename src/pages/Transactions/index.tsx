@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header";
 import { Summary } from "../../components/Summary";
+import { SerchForm } from "./components/SerchForm";
 import { PriceHighlight, TransectionsContainer, TransectionsTable } from "./styles";
 
 
@@ -10,6 +11,7 @@ export function Transections(){
             <Summary/>
 
             <TransectionsContainer>
+            <SerchForm/>
                 <TransectionsTable>
                     <tbody>
                         <tr>
