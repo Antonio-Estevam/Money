@@ -4,6 +4,7 @@ import { Summary } from "../../components/Summary";
 import { SerchForm } from "./components/SerchForm";
 import { PriceHighlight, TransectionsContainer, TransectionsTable } from "./styles";
 import { TransactionContext } from "../../contexts/TransactionsContext";
+import { dateFormatter, priceFormatter } from "../../utiils/formater";
 
 
 export function Transections(){
@@ -21,15 +22,16 @@ export function Transections(){
                     <tbody>
                         {transactions.map(transaction => {
                             return (
-                                <tr>
-                            <td width={"50%"} key={transaction.id}>{transaction.description}</td>
+                                <tr key={transaction.id}>
+                            <td width={"50%"} >{transaction.description}</td>
                             <td>
                                 <PriceHighlight variant={transaction.type}>
-                                {transaction.price}
+                                    {transaction.type === "outcome" && "- "}
+                                {priceFormatter.format(transaction.price)}
                                 </PriceHighlight>
                             </td>
                             <td>{transaction.category}</td>
-                            <td>{transaction.createdAt}</td>
+                            <td>{dateFormatter.format(new Date (transaction.createdAt))}</td>
                         </tr>
 
                             )
